@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Search Results</h1>
+        {% if products %}
+            <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.product_price }}</td>
+                        <td><a href="{{ product.product_url }}">{{ product.product_url }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
